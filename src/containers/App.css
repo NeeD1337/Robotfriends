@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Kidpixies';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/KidpixiesRegular.ttf') format('truetype');
+}
+h1 {
+  font-family: 'Kidpixies';
+  font-weight: 200;
+  color:#0ccac4
+}
