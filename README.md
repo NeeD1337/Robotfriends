@@ -1,12 +1,23 @@
-# React + Vite
+# 🤖 RobotFriends
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicație React care afișează o listă de „roboți” (utilizatori) obținuți dintr-un API. Include funcționalitate de căutare și interfață cu scroll. Proiect realizat cu 🧠 pasiune și 📦 Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcționalități
 
-## Expanding the ESLint configuration
+- 🔎 Căutare în timp real în lista de roboți
+- 📦 Date obținute din API (`jsonplaceholder.typicode.com`)
+- 🔃 Scroll automat dacă lista este mai lungă
+- ✅ Proiect structurat cu foldere `components/` și `containers/`
+- 🎨 Stilizare cu [Tachyons](https://tachyons.io/) pentru un design simplu și curat
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tehnologii folosite
+
+- React `18`
+- Vite `4`
+- Tachyons CSS
+- JavaScript ES6+
+- HTML5 & CSS3
