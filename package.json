@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rbnd/react-dark-mode": "^2.0.2",
+    "ldrs": "^1.1.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tachyons": "^4.12.0"

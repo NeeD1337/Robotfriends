@@ -3,22 +3,40 @@ import CardList from "../components/CardList.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import './App.css';
 import Scroll from "../components/Scroll.jsx";
+import Loader from "../components/Loader.jsx";
+import { DarkModeProvider } from "@rbnd/react-dark-mode"
+
+
 
 class App extends Component{
     constructor() {
         super()
         this.state = {
             robots:[],
-            searchfield: ""
+            searchfield: "",
+            error: null
         }
         // console.log("consturctor");
     }
 
     componentDidMount() {
         fetch("https://jsonplaceholder.typicode.com/users")
-        .then(response => response.json())
-        .then(users => this.setState({robots: users}));
-        // console.log("componentDidMount");
+        .then(response => {
+            if(!response.ok) {
+                throw new Error("Eroare la incarcarea datelor");
+            }
+            return response.json();
+        }
+        )
+        .then(users => {
+            setTimeout(() => {
+                this.setState({ robots: users })
+            }, 2000) // Simulăm o întârziere de 2 secunde pentru a vedea loader-ul
+        })
+        .catch(error => {
+            console.error("Eroare API:",error);
+            this.setState({ error: "API nu raspunde.Incearca mai tarziu."})
+        });
     }
 
     onSearchChange = (event) => {
@@ -26,15 +44,23 @@ class App extends Component{
     }
 
     render() {
-        const { robots, searchfield } = this.state; // Destructurare pentru a face codul mai curat
+        const { robots, searchfield, error } = this.state; // Destructurare pentru a face codul mai curat
+        if (error) {
+            return (
+                <div className="tc" style={{ paddingTop: '100px' }}>
+                    <h2>{error}</h2>
+                </div>
+            );
+        }
         const filteredRobots = robots.filter(robot => {
         return robot.name.toLowerCase().includes(searchfield.toLowerCase()); ///
         })
         if(!robots.length) {
-            return <h1 className="tc">Loading...</h1>
+            return <Loader />;
         } else {
         // console.log("render");
         return (
+        <DarkModeProvider>
     <div className="tc">
     <h1 className="f1">RoboFriends</h1>
     <SearchBox searchChange ={this.onSearchChange}/>
@@ -42,6 +68,7 @@ class App extends Component{
     <CardList robots = {filteredRobots} />
     </Scroll>
     </div>
+    </DarkModeProvider>
     );
         }
     }
